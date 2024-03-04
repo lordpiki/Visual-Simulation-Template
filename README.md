@@ -8,7 +8,7 @@ This project provides a quick-start template for visualizations in C++, using Op
 
 - **Easy Setup**: Minimal configuration for quick deployment.
 - **OpenGL & GLFW**: Utilizes OpenGL for graphics rendering and GLFW for window management.
-- **Sample Visualization**: Includes classes and function for easy use.
+- **Ready for use**: Includes classes and function for easy use.
 
 ## Getting Started
 
