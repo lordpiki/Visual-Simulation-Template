@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\mikid\Documents\Work\Personal\GUI_CPP\Source.cpp(25,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\mikid\Documents\Work\Personal\GUI_CPP\Source.cpp(115,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\mikid\Documents\Work\Personal\GUI_CPP\Source.cpp(129,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  GUI_CPP.vcxproj -> C:\Users\mikid\Documents\Work\Personal\GUI_CPP\x64\Debug\GUI_CPP.exe
