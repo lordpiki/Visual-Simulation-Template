@@ -2,19 +2,15 @@
 #include <cstdlib>
 #include <cmath>
 #include <ctime>
+#include "Point.h"
+#include "Line.h"
+#include "Arrow.h"
 
 #define M_PI 3.14159265358979323846
 
 const int numParticles = 10;
 
-struct Particle {
-    float x, y;
-    float vx, vy;
-    float mass; // Added mass for realistic gravity
-    float color[3];
-};
-
-Particle particles[numParticles];
+Point particles[numParticles];
 float deltaTime = 3.5f;
 const float gravity = 0.0000098f; // Gravitational constant
 
@@ -40,20 +36,10 @@ void updateParticles() {
 
 
 void drawCoordinateSystem() {
-    glLineWidth(1.0f);
-    glColor3f(0.5f, 0.5f, 0.5f);
-
-    // Draw x-axis
-    glBegin(GL_LINES);
-    glVertex2f(-1.0f, 0.0f);
-    glVertex2f(1.0f, 0.0f);
-    glEnd();
-
-    // Draw y-axis
-    glBegin(GL_LINES);
-    glVertex2f(0.0f, -1.0f);
-    glVertex2f(0.0f, 1.0f);
-    glEnd();
+    Line xLine(Position(-1, 0), Position(1, 0), Color(255, 255, 255));
+    Line yLine(Position(0, -1), Position(0, 1), Color(255, 255, 255));
+    xLine.draw();
+    yLine.draw();
 }
 
 void initParticles() {
@@ -68,61 +54,6 @@ void initParticles() {
         particles[i].color[2] = 1.0f;
     }
 }
-
-
-void drawArrow(float x1, float y1, float x2, float y2) {
-    glLineWidth(1.0f);
-    glColor3f(0.5f, 0.5f, 0.5f);
-
-    // Draw line from x1,y1 to x2,y2
-    glBegin(GL_LINES);
-    glVertex2f(x1, y1);
-    glVertex2f(x2, y2);
-    glEnd();
-
-    // Calculate arrowhead position
-    float arrowLength = 0.1f;
-    float arrowAngle = 0.2f;
-    float dx = x2 - x1;
-    float dy = y2 - y1;
-    float angle = atan2(dy, dx);
-
-    // Draw arrowhead
-    glBegin(GL_TRIANGLES);
-    glVertex2f(x2, y2);
-    glVertex2f(x2 - arrowLength * cos(angle - arrowAngle), y2 - arrowLength * sin(angle - arrowAngle));
-    glVertex2f(x2 - arrowLength * cos(angle + arrowAngle), y2 - arrowLength * sin(angle + arrowAngle));
-    glEnd();
-}
-
-void drawParticle(const Particle& particle) {
-
-    glPointSize(10.0f);
-    glBegin(GL_TRIANGLE_FAN);
-    glColor3f(particle.color[0], particle.color[1], particle.color[2]);
-
-    // Center of the circle
-    glVertex2f(particle.x, particle.y);
-
-    // Number of segments in the circle (adjust for smoothness)
-    const int numSegments = 30;
-    const float particleRadius = 0.02f;
-    int windowWidth = 1500, windowHeight = 1125;
-
-    float aspectRatio = static_cast<float>(windowWidth) / static_cast<float>(windowHeight);
-
-    for (int i = 0; i <= numSegments; ++i) {
-        float theta = (2.0f * M_PI * static_cast<float>(i)) / static_cast<float>(numSegments);
-        float dx = particleRadius * std::cos(theta);
-        float dy = particleRadius * std::sin(theta) * aspectRatio;  // Adjust for aspect ratio
-        glVertex2f(particle.x + dx, particle.y + dy);
-    }
-
-    glEnd();
-}
-
-
-
 
 int main(void) {
 
@@ -151,6 +82,11 @@ int main(void) {
         glClear(GL_COLOR_BUFFER_BIT);
         drawCoordinateSystem();
 
+        Point point(Position(0, 0), Color(255, 0, 0));
+        point.draw();
+
+        Line line(Position(0, 0), Position(1, 1), Color(0, 255, 0));
+        line.draw();
 
         updateParticles();
 
