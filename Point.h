@@ -8,8 +8,8 @@ public:
 	Position() : x(0), y(0) {};
 	~Position() {};
 
-	int getX() const { return x; }
-	int getY() const { return y; }
+	float getX() const { return x; }
+	float getY() const { return y; }
 
 	void setX(int x) { x = x; }
 	void setY(int y) { y = y; }
@@ -24,17 +24,18 @@ private:
 class Point
 {
 public:
+	Point(const Position& position, const Color& color) : _position(position), _color(color), _radius(0.02f), _mass(0), _vx(0), _vy(0) {};
 	Point(const Position& position, const Color& color, float radius, float vx, float vy, float mass) : _position(position), _color(color), _radius(radius), _mass(mass), _vx(vx), _vy(vy) {};
 	Point(const Position& position, const Color& color, float radius, float mass) : _position(position), _color(color), _radius(radius), _mass(mass), _vx(0), _vy(0) {};
 	Point() : _position(Position()), _color(Color()), _radius(0.02f), _mass(0), _vx(0), _vy(0) {};
 	~Point() {};
 
-	Position getPosition() const { return _position; }
-	Color getColor() const { return _color; }
-	float getRadius() const { return _radius; }
-	float getMass() const { return _mass; }
-	float getVx() const { return _vx; }
-	float getVy() const { return _vy; }
+	Position& getPosition() { return _position; }
+	Color& getColor() { return _color; }
+	float& getRadius() { return _radius; }
+	float& getMass() { return _mass; }
+	float& getVx() { return _vx; }
+	float& getVy() { return _vy; }
 
 	void setPosition(const Position& position) { _position = position; }
 	void setColor(const Color& color) { _color = color; }
