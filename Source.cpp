@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <ctime>
-#include "Point.h"
+#include "Particle.h"
 #include "Line.h"
 #include "Arrow.h"
 #include <iostream>
@@ -15,7 +15,7 @@ using std::endl;
 
 const int numParticles = 10;
 
-Point particles[numParticles];
+Particle particles[numParticles];
 Arrow arrows[numParticles];
 float deltaTime = 3.5f;
 const float gravity = 0.0000098f; // Gravitational constant

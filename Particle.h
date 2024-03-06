@@ -21,14 +21,14 @@ public:
 private:
 };
 
-class Point
+class Particle
 {
 public:
-	Point(const Position& position, const Color& color) : _position(position), _color(color), _radius(0.02f), _mass(0), _vx(0), _vy(0) {};
-	Point(const Position& position, const Color& color, float radius, float vx, float vy, float mass) : _position(position), _color(color), _radius(radius), _mass(mass), _vx(vx), _vy(vy) {};
-	Point(const Position& position, const Color& color, float radius, float mass) : _position(position), _color(color), _radius(radius), _mass(mass), _vx(0), _vy(0) {};
-	Point() : _position(Position()), _color(Color()), _radius(0.02f), _mass(0), _vx(0), _vy(0) {};
-	~Point() {};
+	Particle(const Position& position, const Color& color) : _position(position), _color(color), _radius(0.02f), _mass(0), _vx(0), _vy(0) {};
+	Particle(const Position& position, const Color& color, float radius, float vx, float vy, float mass) : _position(position), _color(color), _radius(radius), _mass(mass), _vx(vx), _vy(vy) {};
+	Particle(const Position& position, const Color& color, float radius, float mass) : _position(position), _color(color), _radius(radius), _mass(mass), _vx(0), _vy(0) {};
+	Particle() : _position(Position()), _color(Color()), _radius(0.02f), _mass(0), _vx(0), _vy(0) {};
+	~Particle() {};
 
 	Position& getPosition() { return _position; }
 	Color& getColor() { return _color; }

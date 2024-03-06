@@ -7,9 +7,9 @@
 #define WINDOW_HEIGHT 1125
 
 #define M_PI 3.14159265358979323846
-#include "Point.h"
+#include "Particle.h"
 
-void Point::draw()
+void Particle::draw()
 {
     glPointSize(_radius);
     glBegin(GL_TRIANGLE_FAN);
