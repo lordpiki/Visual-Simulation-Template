@@ -53,6 +53,35 @@ float getRandomValue()
 	return getRandomValue(-1, 1);
 }
 
+void drawSpiralOfArrows(int numArrows) {
+    // Set up your GUI or OpenGL context
+
+    float angle = 0.0f;
+    float radiusIncrement = 0.15f;  // Adjust this value based on the desired spacing between arrows
+    Position start(0.0f, 0.0f);
+    Position end(0.0f, 0.0f);
+
+
+    for (int i = 0; i < numArrows; ++i) {
+        // Calculate the position of the arrow in polar coordinates
+        float x = radiusIncrement * angle * cos(angle);
+        float y = radiusIncrement * angle * sin(angle);
+        start = end;
+        end = Position(x, y);
+
+        // Create an Arrow object with the calculated position
+        Arrow arrow(start, end, Color(255, 0, 0), 1.0f);
+
+        // Draw the arrow
+        arrow.drawArrow();
+
+        // Increment the angle for the next arrow
+        angle += 0.05f;  // Adjust this value based on the desired rotation rate
+    }
+
+    // Finish drawing and display
+}
+
 void drawCoordinateSystem(GLFWwindow* window)
 {
     Arrow xArrow(Position(-1, 0), Position(1, 0), Color(255, 255, 255));
@@ -105,6 +134,8 @@ int main(void) {
         drawCoordinateSystem(window);
 
         updateParticles();
+        
+        drawSpiralOfArrows(100);   
 
         for (int i = 0; i < numParticles; ++i) {
             particles[i].draw();
