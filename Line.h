@@ -1,6 +1,6 @@
 #pragma once
 #include "Color.h"
-#include "Particle.h"
+#include "Point.h"
 
 class Line
 {

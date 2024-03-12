@@ -135,15 +135,17 @@
   <ItemGroup>
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Enviroment.cpp" />
     <ClCompile Include="Line.cpp" />
-    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Enviroment.h" />
     <ClInclude Include="Line.h" />
-    <ClInclude Include="Particle.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

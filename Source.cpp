@@ -2,10 +2,11 @@
 #include <cstdlib>
 #include <cmath>
 #include <ctime>
-#include "Particle.h"
+#include "Point.h"
 #include "Line.h"
 #include "Arrow.h"
 #include <iostream>
+#include "Enviroment.h"
 
 using std::cout;
 using std::endl;
@@ -13,29 +14,29 @@ using std::endl;
 
 #define M_PI 3.14159265358979323846
 
-const int numParticles = 10;
+const int numPoints = 10;
 
-Particle particles[numParticles];
-Arrow arrows[numParticles];
+Point Points[numPoints];
+Arrow arrows[numPoints];
 float deltaTime = 3.5f;
 const float gravity = 0.0000098f; // Gravitational constant
 
 void drawCoordinateSystem(GLFWwindow* window);
 
-void updateParticles() {
+void updatePoints() {
 
     deltaTime = glfwGetTime(); // Get elapsed time
-    for (int i = 0; i < numParticles; ++i) {
+    for (int i = 0; i < numPoints; ++i) {
         // Update position based on velocity and deltaTime
-        particles[i].getPosition().x += particles[i].getVx() * deltaTime;
-        particles[i].getPosition().y += particles[i].getVy() * deltaTime;
+        Points[i].getPosition().x += Points[i].getVx() * deltaTime;
+        Points[i].getPosition().y += Points[i].getVy() * deltaTime;
 
         // Apply gravity force based on mass
-        particles[i].getVy() -= gravity * deltaTime / particles[i].getMass();
+        Points[i].getVy() -= gravity * deltaTime / 1.0f;
 
-        // Reflect particles off the ground
-        if (particles[i].getPosition().y < 0.0f) {
-            particles[i].getPosition().y = 0.0f;
+        // Reflect Points off the ground
+        if (Points[i].getPosition().y < 0.0f) {
+            Points[i].getPosition().y = 0.0f;
         }
     }
 }
@@ -97,6 +98,16 @@ void drawCoordinateSystem(GLFWwindow* window)
 
 int main(void) {
 
+
+    Enviroment env;
+
+    env.resume();
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    env.stop();
+
+    return 0;
+
+
     srand(time(NULL));
 
     GLFWwindow* window;
@@ -106,7 +117,7 @@ int main(void) {
 
     int windowWidth = 1000, windowHeight = 750;
 
-    window = glfwCreateWindow(windowWidth, windowHeight, "Particle Simulation", NULL, NULL);
+    window = glfwCreateWindow(windowWidth, windowHeight, "Point Simulation", NULL, NULL);
 
     if (!window) {
         glfwTerminate();
@@ -123,22 +134,24 @@ int main(void) {
         
 	}
 
-    for (auto& particle : particles) {
-        particle.setPosition(Position(getRandomValue(), getRandomValue() + 1));
-        particle.setColor(Color(0, 0, 255));
-        particle.setMass(0.1f);
+    for (auto& Point : Points) {
+        Point.setPosition(Position(getRandomValue(), getRandomValue() + 1));
+        Point.setColor(Color(0, 0, 255));
     }
 
+    
+
+    return 0;
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
         drawCoordinateSystem(window);
 
-        updateParticles();
+        updatePoints();
         
         drawSpiralOfArrows(100);   
 
-        for (int i = 0; i < numParticles; ++i) {
-            particles[i].draw();
+        for (int i = 0; i < numPoints; ++i) {
+            Points[i].draw();
             arrows[i].drawArrow();
         }
 
