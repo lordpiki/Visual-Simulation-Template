@@ -57,13 +57,9 @@ void drawCoordinateSystem(GLFWwindow* window)
 {
     Arrow xArrow(Position(-1, 0), Position(1, 0), Color(255, 255, 255));
     Arrow yArrow(Position(0, -1), Position(0, 1), Color(255, 255, 255));
-    Arrow zArrow(Position(-1, -1), Position(0.5, 0.5), Color(255, 255, 255));
-    //xArrow.draw();
-    //yArrow.draw();
 
     xArrow.drawArrow();
     yArrow.drawArrow();
-    zArrow.drawArrow();
 }
 
 int main(void) {
