@@ -1,6 +1,10 @@
 #pragma once
 #include <mutex>
 #include <condition_variable>
+#include <GLFW/glfw3.h>
+#include <cstdlib>
+#include <cmath>
+#include <ctime>
 
 class Enviroment
 {
@@ -11,7 +15,7 @@ public:
     void resume();
     void stop();
 
-private:
+protected:
     bool _isPaused;
     float _timeStamp;
 
@@ -20,4 +24,6 @@ private:
 
     void run();
     void update();
+
+	GLFWwindow* _window;
 };

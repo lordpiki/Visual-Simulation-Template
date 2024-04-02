@@ -3,8 +3,28 @@
 #include <iostream>
 #include <thread>
 
+
 Enviroment::Enviroment(float timeStamp) : _timeStamp(timeStamp), _isPaused(false)
 {
+
+    srand(time(NULL));
+
+    if (!glfwInit())
+        exit(EXIT_FAILURE);
+
+
+    int windowWidth = 1000, windowHeight = 750;
+
+    _window = glfwCreateWindow(windowWidth, windowHeight, "Point Simulation", NULL, NULL);
+
+    if (!_window) {
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
+
+    glfwMakeContextCurrent(_window);
+
+
     std::thread t1(&Enviroment::run, this);
     t1.detach();
     stop();
@@ -17,19 +37,22 @@ Enviroment::~Enviroment()
 
 void Enviroment::run()
 {
-    while (true)
+
+    while (true && !glfwWindowShouldClose(_window))
     {
+        glClear(GL_COLOR_BUFFER_BIT);
         std::unique_lock<std::mutex> lock(_runningMutex);
         _cv.wait(lock, [this]() { return !_isPaused; });
-
         if (!_isPaused)
             update();
+
+        glfwSwapBuffers(_window);
+        glfwPollEvents();
     }
 }
 
 void Enviroment::update()
 {
-    std::cout << "Enviroment update" << std::endl;
 }
 
 void Enviroment::resume()

@@ -37,4 +37,5 @@ void Arrow::drawArrow() const
     glVertex2f(alignedArrowHeadX - arrowHeadSize * cos(angle + M_PI / 4), alignedArrowHeadY - arrowHeadSize * sin(angle + M_PI / 4));
     glVertex2f(alignedArrowHeadX - arrowHeadSize * cos(angle - M_PI / 4), alignedArrowHeadY - arrowHeadSize * sin(angle - M_PI / 4));
     glEnd();
+
 }
