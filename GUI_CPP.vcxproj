@@ -133,19 +133,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Arrow.cpp" />
-    <ClCompile Include="Color.cpp" />
-    <ClCompile Include="Enviroment.cpp" />
-    <ClCompile Include="Line.cpp" />
-    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="Force.cpp" />
+    <ClCompile Include="GravityForce.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="PhyisicsEngine.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arrow.h" />
-    <ClInclude Include="Color.h" />
-    <ClInclude Include="Enviroment.h" />
-    <ClInclude Include="Line.h" />
-    <ClInclude Include="Point.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="Force.h" />
+    <ClInclude Include="GravityForce.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="PhyisicsEngine.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="Simulation.h" />
+    <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
