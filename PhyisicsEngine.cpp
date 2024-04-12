@@ -18,7 +18,8 @@ void PhysicsEngine::update(float dt) {
 void PhysicsEngine::applyForces() {
     for (RigidBody& body : bodies) {
         Vector2D totalForce(0.0f, 0.0f);
-        for (Force* force : forces) {
+        for (Force* force : forces) 
+        {
             totalForce = totalForce + force->calculateForce(body);
         }
         body.applyForce(totalForce);

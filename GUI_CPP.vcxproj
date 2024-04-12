@@ -149,7 +149,7 @@
     <ClInclude Include="Force.h" />
     <ClInclude Include="GravityForce.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="PhyisicsEngine.h" />
+    <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="Simulation.h" />
