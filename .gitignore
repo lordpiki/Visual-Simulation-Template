@@ -1,8 +1,3 @@
-# library
-cryptlib/
-
-# Log files
-*log.txt
 
 # Prerequisites
 *.d
