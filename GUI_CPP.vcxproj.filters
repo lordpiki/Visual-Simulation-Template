@@ -45,6 +45,9 @@
     <ClCompile Include="Simulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsEnv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2D.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Simulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEnv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
