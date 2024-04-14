@@ -38,6 +38,8 @@ void PhysicsEngine::handleCollisions() {
             if (Collision::checkCollision(bodies[i], bodies[j])) {
                 Collision::resolveCollision(bodies[i], bodies[j]);
             }
+            
         }
+        Collision::checkWallCollision(bodies[i]);
     }
 }

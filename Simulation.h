@@ -6,7 +6,7 @@
 
 class Simulation {
 public:
-    Simulation(GLFWwindow* window);
+    Simulation(GLFWwindow* window, float fixedTimeStep);
     ~Simulation();
 
     void run();
@@ -16,4 +16,9 @@ private:
     PhysicsEngine physicsEngine;
     Renderer renderer;
     InputManager inputManager;
+
+private:
+    float fixedTimeStep;
+    double lastTime;
+    double accumulatedTime;
 };

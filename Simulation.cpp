@@ -1,10 +1,13 @@
 #include "Simulation.h"
 #include "GravityForce.h"
+#include <iostream>
+
+
 
 Simulation::Simulation(GLFWwindow* window)
     : window(window), renderer(window), inputManager(window) {
     // Initialize the simulation (e.g., add initial bodies and forces)
-    RigidBody body1(10.0f, Vector2D(0.0f, 0.0f), Vector2D(0.0f, 0.0f));
+    RigidBody body1(10.0f, Vector2D(0.0f, 0.0f), Vector2D(1.10f, 0.10f));
     physicsEngine.addBody(body1);
 
     GravityForce* gravity = new GravityForce(Vector2D(0.0f, -9.8f));
@@ -16,14 +19,16 @@ Simulation::~Simulation() {
 }
 
 void Simulation::run() {
-    float dt = 0.0001f; // Time step
+    float dt = 0.0005f; // Time step
+    float realTime = glfwGetTime() * dt;
 
     while (!glfwWindowShouldClose(window)) {
         // Process input
         inputManager.processInput(physicsEngine.bodies);
+        std::cout << "realTime: " << glfwGetTime() << std::endl;
 
         // Update physics simulation
-        physicsEngine.update(dt);
+        physicsEngine.update(glfwGetTime());
 
         // Render the scene
         renderer.render(physicsEngine.bodies);

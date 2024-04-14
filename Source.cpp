@@ -20,8 +20,6 @@ int main() {
 
     glfwMakeContextCurrent(window);
 
-    // Initialize GLEW or other OpenGL libraries
-
     // Create and run the simulation
     Simulation simulation(window);
     simulation.run();

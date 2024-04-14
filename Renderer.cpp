@@ -24,7 +24,6 @@ void Renderer::render(const std::vector<RigidBody>& bodies) {
             float y = radius * sinf(theta) + body.position.y; // Calculate y-coordinate
             glVertex2f(x, y); // Add vertex to the polygon
         }
-        cout << "Rendering body at position (" << body.position.x << ", " << body.position.y << ")" << endl;
         glEnd();
     }
 
