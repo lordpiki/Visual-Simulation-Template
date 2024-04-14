@@ -20,8 +20,10 @@ int main() {
 
     glfwMakeContextCurrent(window);
 
+    float fps = 60.0f;
+
     // Create and run the simulation
-    Simulation simulation(window);
+    Simulation simulation(window, 1.0 / fps);
     simulation.run();
 
     glfwTerminate();

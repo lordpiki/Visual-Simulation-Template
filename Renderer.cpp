@@ -25,6 +25,7 @@ void Renderer::render(const std::vector<RigidBody>& bodies) {
             glVertex2f(x, y); // Add vertex to the polygon
         }
         glEnd();
+        cout << "body pos: (" << body.position.x << ", " << body.position.y << ")" << " acc: " << body.acceleration.x << ", " << body.acceleration.y << " vel: " << body.velocity.x << ", " << body.velocity.y << endl;
     }
 
     glfwSwapBuffers(window);

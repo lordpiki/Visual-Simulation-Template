@@ -1,13 +1,15 @@
 #include "Simulation.h"
 #include "GravityForce.h"
 #include <iostream>
+#include "PhysicsEngine.h"
 
 
 
-Simulation::Simulation(GLFWwindow* window)
-    : window(window), renderer(window), inputManager(window) {
+Simulation::Simulation(GLFWwindow* window, float fixedTimeStep)
+    : window(window), renderer(window), inputManager(window), fixedTimeStep(fixedTimeStep),
+    lastTime(glfwGetTime()), accumulatedTime(0.0) {
     // Initialize the simulation (e.g., add initial bodies and forces)
-    RigidBody body1(10.0f, Vector2D(0.0f, 0.0f), Vector2D(1.10f, 0.10f));
+    RigidBody body1(10.0f, Vector2D(0.0f, 0.0f), Vector2D(1.0f, 0.10f));
     physicsEngine.addBody(body1);
 
     GravityForce* gravity = new GravityForce(Vector2D(0.0f, -9.8f));
@@ -19,16 +21,25 @@ Simulation::~Simulation() {
 }
 
 void Simulation::run() {
-    float dt = 0.0005f; // Time step
-    float realTime = glfwGetTime() * dt;
-
     while (!glfwWindowShouldClose(window)) {
         // Process input
         inputManager.processInput(physicsEngine.bodies);
-        std::cout << "realTime: " << glfwGetTime() << std::endl;
 
-        // Update physics simulation
-        physicsEngine.update(glfwGetTime());
+        // Calculate the elapsed time since the last frame
+        double currentTime = glfwGetTime();
+        double elapsedTime = currentTime - lastTime;
+        lastTime = currentTime;
+
+        // Accumulate the elapsed time
+        accumulatedTime += elapsedTime;
+
+        // Update the physics simulation using the fixed time step
+        while (accumulatedTime >= fixedTimeStep)
+        {
+            physicsEngine.update(fixedTimeStep);
+            accumulatedTime -= fixedTimeStep;
+
+        }
 
         // Render the scene
         renderer.render(physicsEngine.bodies);

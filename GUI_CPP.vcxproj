@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="DragForce.cpp" />
     <ClCompile Include="Force.cpp" />
     <ClCompile Include="GravityForce.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -146,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="DragForce.h" />
     <ClInclude Include="Force.h" />
     <ClInclude Include="GravityForce.h" />
     <ClInclude Include="InputManager.h" />
