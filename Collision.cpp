@@ -1,15 +1,17 @@
 #include "Collision.h"
 #include <iostream>
+#include <cmath>
+#include "Helper.h"
 
-#define DRAG_COEFFICIENT 0.2
+#define DRAG_COEFFICIENT 0.2f
 
 bool Collision::checkCollision(const RigidBody& body1, const RigidBody& body2) {
-    // Implement collision detection logic
-    return false;
+    return Helper::distance(body1.position, body2.position) < 0.01f * 2;
 }
 
 void Collision::resolveCollision(RigidBody& body1, RigidBody& body2) {
-    // Implement collision resolution logic
+    body1.velocity = body1.velocity * -1;
+    body2.velocity = body2.velocity * -1;
 }
 
 bool Collision::checkWallCollision(RigidBody& body, float windowWidth, float windowHeight) {
@@ -42,12 +44,12 @@ void Collision::resolveWallCollision(RigidBody& body, float windowWidth, float w
     }
 
     // Resolve top and bottom wall collisions
-    if (body.position.y - radius < -1.0) {
+    if (body.position.y - radius <= -1.0) {
         body.position.y = -1;
         body.velocity.y = -body.velocity.y;
-        if (abs(body.velocity.y) < 0.43) {
-			body.velocity.y = 0.0f;
-		}
+  //      if (abs(body.velocity.y) < 0.5f) {
+		//	body.velocity.y = 0.0f;
+		//}
     }
     else if (body.position.y + radius > windowHeight) {
         body.position.y = windowHeight - radius;

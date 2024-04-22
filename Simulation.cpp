@@ -2,15 +2,19 @@
 #include "GravityForce.h"
 #include <iostream>
 #include "PhysicsEngine.h"
-
+#include "Helper.h"
 
 
 Simulation::Simulation(GLFWwindow* window, float fixedTimeStep)
     : window(window), renderer(window), inputManager(window), fixedTimeStep(fixedTimeStep),
     lastTime(glfwGetTime()), accumulatedTime(0.0) {
-    // Initialize the simulation (e.g., add initial bodies and forces)
-    RigidBody body1(10.0f, Vector2D(0.0f, 0.0f), Vector2D(1.0f, 0.10f));
-    physicsEngine.addBody(body1);
+
+    
+    for (int i = 0; i < 10000; i++) {
+		RigidBody body(10.0f, Vector2D(Helper::getRand(-1, 1), Helper::getRand(-1, 1)), Vector2D(Helper::getRand(-1, 1), Helper::getRand(-1, 1)));
+		physicsEngine.addBody(body);
+	}
+
 
     GravityForce* gravity = new GravityForce(Vector2D(0.0f, -9.8f));
     physicsEngine.addForce(gravity);

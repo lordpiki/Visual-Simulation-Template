@@ -137,6 +137,7 @@
     <ClCompile Include="DragForce.cpp" />
     <ClCompile Include="Force.cpp" />
     <ClCompile Include="GravityForce.cpp" />
+    <ClCompile Include="Helper.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="PhyisicsEngine.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="DragForce.h" />
     <ClInclude Include="Force.h" />
     <ClInclude Include="GravityForce.h" />
+    <ClInclude Include="Helper.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="PhysicsEngine.h" />
     <ClInclude Include="Renderer.h" />

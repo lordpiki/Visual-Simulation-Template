@@ -8,6 +8,6 @@ void RigidBody::applyForce(const Vector2D& force) {
 }
 
 void RigidBody::integrate(float dt) {
-    position = position + velocity * dt + acceleration * 0.5f * dt * dt;
     velocity = velocity + acceleration * dt;
+    position = position + velocity * dt + acceleration * 0.5f * dt * dt;
 }

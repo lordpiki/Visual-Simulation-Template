@@ -1,11 +1,14 @@
 #include <GLFW/glfw3.h>
 #include "Simulation.h"
+#include <time.h>
 
 int main() {
     if (!glfwInit()) {
         // Handle GLFW initialization error
         return -1;
     }
+    srand(time(0));
+
 
     // Configure GLFW window properties
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
