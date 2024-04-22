@@ -136,6 +136,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DragForce.cpp" />
     <ClCompile Include="Force.cpp" />
+    <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GravityForce.cpp" />
     <ClCompile Include="Helper.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="DragForce.h" />
     <ClInclude Include="Force.h" />
+    <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="GravityForce.h" />
     <ClInclude Include="Helper.h" />
     <ClInclude Include="InputManager.h" />
